@@ -1,3 +1,3 @@
-import home from "@/lib/pages/home";
+import home from '@/lib/pages/home'
 
-export default home;
+export default home
