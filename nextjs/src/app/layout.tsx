@@ -1,7 +1,9 @@
+import '@/styles/globals.css'
+
 import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
+import React from 'react'
 
-import '@/styles/globals.css'
 import { cn } from '@/lib/utils'
 import { fontJakarta } from '@/styles/font'
 
