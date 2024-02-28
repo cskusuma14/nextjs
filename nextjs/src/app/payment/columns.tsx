@@ -2,6 +2,8 @@
 
 import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 import { Button } from '@/lib/components/ui/button'
 import {
@@ -31,28 +33,24 @@ export type Payment = {
 
 // export function DeleteModal() {
 //     return (
-//         <>
-//             <Dialog>
-//                 <DialogContent className="sm:max-w-[425px]">
-//                     <DialogHeader>
-//                         <DialogTitle>Delete User</DialogTitle>
-//                     </DialogHeader>
-//                     <div className="grid gap-4 py-4">
-//                         <p>Are you sure you want to delete this item?</p>
-//                     </div>
-//                     <DialogFooter>
-//                         <DialogClose asChild>
-//                             <Button type="button">Save</Button>
-//                         </DialogClose>
-//                     </DialogFooter>
-//                 </DialogContent>
-//             </Dialog>
-//         </>
+// <>
+//     <Dialog>
+//         <DialogContent className="sm:max-w-[425px]">
+//             <DialogHeader>
+//                 <DialogTitle>Delete User</DialogTitle>
+//             </DialogHeader>
+//             <div className="grid gap-4 py-4">
+//                 <p>Are you sure you want to delete this item?</p>
+//             </div>
+//             <DialogFooter>
+//                 <DialogClose asChild>
+//                     <Button type="button">Save</Button>
+//                 </DialogClose>
+//             </DialogFooter>
+//         </DialogContent>
+//     </Dialog>
+// </>
 //     )
-// }
-// const handleClick = () => {
-//     const router = useRouter()
-//     router.push('/payment/edit-data')
 // }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -93,21 +91,62 @@ export const columns: ColumnDef<Payment>[] = [
         id: 'actions',
         cell: ({ row }) => {
             const payment = row.original
+            const router = useRouter()
+            const [openDelete, setOpenDelete] = useState(false)
+            const handleDelete = () => {
+                setOpenDelete(true)
+            }
 
             return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" className="h-8 w-8 p-0">
+                                <span className="sr-only">Open menu</span>
+                                <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem
+                                onClick={() =>
+                                    router.push('/payment/edit-data')
+                                }
+                            >
+                                Edit
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => handleDelete()}>
+                                Delete
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+
+                    <>
+                        <Dialog open={openDelete} onOpenChange={setOpenDelete}>
+                            <DialogContent className="sm:max-w-[425px]">
+                                <DialogHeader>
+                                    <DialogTitle>Delete User</DialogTitle>
+                                </DialogHeader>
+                                <div className="grid gap-4 py-4">
+                                    <p>
+                                        Are you sure you want to delete this
+                                        item?
+                                    </p>
+                                </div>
+                                <DialogFooter>
+                                    <DialogClose asChild>
+                                        <Button type="button" variant="outline">
+                                            No
+                                        </Button>
+                                    </DialogClose>
+                                    <DialogClose asChild>
+                                        <Button type="button">Yes</Button>
+                                    </DialogClose>
+                                </DialogFooter>
+                            </DialogContent>
+                        </Dialog>
+                    </>
+                </>
             )
         },
     },
