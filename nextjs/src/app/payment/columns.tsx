@@ -2,7 +2,6 @@
 
 import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
-import { useRouter } from 'next/router'
 
 import { Button } from '@/lib/components/ui/button'
 import {
