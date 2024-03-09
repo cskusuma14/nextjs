@@ -7,7 +7,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import { fontJakarta } from '@/styles/font'
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
     subsets: ['latin'],
     variable: '--font-sans',
 })

@@ -31,6 +31,7 @@ const Register = () => {
             }
         }
         checkSession()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -70,12 +71,13 @@ const Register = () => {
                         <p className="mt-4 text-center text-xs text-gray-700">
                             {' '}
                             Already have an account?{' '}
-                            <span
+                            <button
+                                type="button"
                                 onClick={() => router.push('/login')}
                                 className=" text-blue-600 hover:underline"
                             >
                                 Sign In
-                            </span>
+                            </button>
                         </p>
                     </CardFooter>
                 </Card>

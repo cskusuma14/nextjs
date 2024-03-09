@@ -5,5 +5,7 @@
     "singleQuote": true,
     "endOfLine": "auto",
     "plugins": ["prettier-plugin-tailwindcss"],
-    "tailwindFunctions": ["clsx", "cn", "cva"]
+    "tailwindFunctions": ["clsx", "cn", "cva"],
+    "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+    "importOrderSeparation": false
 }

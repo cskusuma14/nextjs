@@ -34,6 +34,7 @@ const Login = () => {
             }
         }
         checkSession()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSubmitLogin = async (e: any) => {
@@ -44,11 +45,14 @@ const Login = () => {
             password,
         })
 
-        if (error) {
-            console.log(error)
-        } else return router.push('/')
-
+        if (!error) {
+            router.push('/')
+        }
         setLoading(false)
+    }
+
+    const gotoRegister = () => {
+        router.push('/register-srv')
     }
 
     return (
@@ -101,13 +105,13 @@ const Login = () => {
                             <p className="mt-4 text-center text-xs text-gray-700">
                                 {' '}
                                 Create New Account?{' '}
-                                <span
-                                    // onClick={() => router.push('/register')}
-                                    onClick={() => router.push('/register-srv')}
+                                <button
+                                    type="button"
+                                    onClick={gotoRegister}
                                     className=" text-blue-600 hover:underline"
                                 >
                                     Sign Up
-                                </span>
+                                </button>
                             </p>
                         </CardFooter>
                     </Card>

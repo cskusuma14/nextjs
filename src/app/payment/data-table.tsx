@@ -42,7 +42,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
@@ -93,8 +93,8 @@ export function DataTable<TData, TValue>({
                             <DialogHeader>
                                 <DialogTitle>Add New User</DialogTitle>
                                 <DialogDescription>
-                                    Input your data here. Click save when you're
-                                    done.
+                                    Input your data here. Click save when you
+                                    are done.
                                 </DialogDescription>
                             </DialogHeader>
                             <div className="grid gap-4 py-4">
@@ -210,3 +210,5 @@ export function DataTable<TData, TValue>({
         </div>
     )
 }
+
+export default DataTable

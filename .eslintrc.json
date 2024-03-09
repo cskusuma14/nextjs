@@ -8,7 +8,9 @@
             }
         ],
         "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error"
+        "simple-import-sort/exports": "error",
+        "react/prop-types": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     },
     "parserOptions": {
         "sourceType": "module",
