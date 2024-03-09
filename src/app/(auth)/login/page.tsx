@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/utils/supabase/client'
+import React, { useEffect, useState } from 'react'
 
 import { Button } from '@/lib/components/ui/button'
 import {
@@ -14,6 +14,7 @@ import {
 } from '@/lib/components/ui/card'
 import { Input } from '@/lib/components/ui/input'
 import { Label } from '@/lib/components/ui/label'
+import { createClient } from '@/lib/utils/supabase/client'
 
 const Login = () => {
     const supabase = createClient()
@@ -25,10 +26,10 @@ const Login = () => {
     useEffect(() => {
         const checkSession = async () => {
             const {
-                data: { session },
-            } = await supabase.auth.getSession()
+                data: { user },
+            } = await supabase.auth.getUser()
 
-            if (session) {
+            if (user) {
                 router.push('/')
             }
         }

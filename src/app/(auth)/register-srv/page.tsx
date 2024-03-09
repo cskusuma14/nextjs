@@ -1,10 +1,12 @@
-import { createClient } from '@/lib/utils/supabase/server'
-import React from 'react'
 import { redirect } from 'next/navigation'
+import React from 'react'
+
+import { createClient } from '@/lib/utils/supabase/server'
 
 const RegisterSr = () => {
     const signUp = async (formData: FormData) => {
         'use server'
+
         const supabase = createClient()
 
         const data = {

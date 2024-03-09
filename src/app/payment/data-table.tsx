@@ -16,9 +16,18 @@ import {
 import * as React from 'react'
 
 import { Button } from '@/lib/components/ui/button'
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/lib/components/ui/dialog'
 import { Input } from '@/lib/components/ui/input'
 import { Label } from '@/lib/components/ui/label'
-
 import {
     Table,
     TableBody,
@@ -27,16 +36,6 @@ import {
     TableHeader,
     TableRow,
 } from '@/lib/components/ui/table'
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    DialogClose,
-} from '@/lib/components/ui/dialog'
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
