@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Button } from '@/lib/components/ui/button'
 import {
@@ -14,9 +14,24 @@ import {
 } from '@/lib/components/ui/card'
 import { Input } from '@/lib/components/ui/input'
 import { Label } from '@/lib/components/ui/label'
+import { createClient } from '@/lib/utils/supabase/client'
 
 const Register = () => {
     const router = useRouter()
+    const supabase = createClient()
+
+    useEffect(() => {
+        const checkSession = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser()
+
+            if (user) {
+                router.push('/')
+            }
+        }
+        checkSession()
+    }, [])
 
     return (
         <div className="flex h-screen items-center justify-center">
